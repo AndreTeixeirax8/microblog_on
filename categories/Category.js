@@ -11,4 +11,7 @@ const Cattegory = connection.define("categories", {
   },
 });
 
+//quando ativo ele vai criar a tabela , após criar pode ser removido
+Category.sync({ force: true });
+
 module.exports = Category;
