@@ -2,7 +2,8 @@ const express = require("express");
 const app = express();
 const bodyParser = require("body-parser");
 const connection = require("./database/database");
-const categoriesController = require("./categories/categories.controller");
+const categoriesController = require("./categories/CategoriesController");
+const categoriesArticles = require("./articles/ArticlesController");
 
 app.set("view engine", "ejs");
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -19,6 +20,7 @@ connection
   });
 
 app.use("/", categoriesController);
+app.use("/", categoriesArticles);
 
 app.get("/", (req, res) => {
   res.render("index"); //pagina inicial
