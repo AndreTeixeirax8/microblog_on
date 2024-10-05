@@ -1,7 +1,7 @@
 const Sequelize = require("sequelize");
 const connection = require("../database/database");
 
-const Cattegory = connection.define("categories", {
+const Category = connection.define("categories", {
   title: {
     type: Sequelize.STRING,
     allowNull: false, //nao permite o campo vazio
@@ -12,6 +12,6 @@ const Cattegory = connection.define("categories", {
 });
 
 //quando ativo ele vai criar a tabela , após criar pode ser removido
-Category.sync({ force: true });
+//Category.sync({ force: true });
 
 module.exports = Category;

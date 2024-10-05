@@ -18,6 +18,6 @@ const Article = connection.define("articles", {
 Category.hasMany(Article); //Uma Categoria tem muitos artigos
 Article.belongsTo(Category); //Um artigo pertence a uma categoria
 //quando ativo ele vai criar a tabela , após criar pode ser removido
-Article.sync({ force: true });
+//Article.sync({ force: true });
 
 module.exports = Article;

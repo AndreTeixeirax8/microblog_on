@@ -4,6 +4,8 @@ const bodyParser = require("body-parser");
 const connection = require("./database/database");
 const categoriesController = require("./categories/CategoriesController");
 const categoriesArticles = require("./articles/ArticlesController");
+const Article = require("./articles/Article");
+const Category = require("./categories/Category");
 
 app.set("view engine", "ejs");
 app.use(bodyParser.urlencoded({ extended: false }));
