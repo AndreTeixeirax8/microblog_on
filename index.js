@@ -2,6 +2,7 @@ const express = require("express");
 const app = express();
 const bodyParser = require("body-parser");
 const connection = require("./database/database");
+const categoriesController = require("./categories/categories.controller");
 
 app.set("view engine", "ejs");
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -16,6 +17,8 @@ connection
   .catch((error) => {
     console.log("erro na conexao com o banco ", error);
   });
+
+app.use("/", categoriesController);
 
 app.get("/", (req, res) => {
   res.render("index"); //pagina inicial
