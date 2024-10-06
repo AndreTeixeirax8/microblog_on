@@ -16,12 +16,14 @@ include('../../partials/navbar.ejs');%>
       </tr>
     </thead>
     <tbody>
+      <% categories.forEach(category => { %>
       <tr>
-        <th>1</th>
-        <th>2</th>
-        <th>3</th>
+        <th><%= category.id %></th>
+        <th><%=category.title %></th>
+        <th><%=category.slug %></th>
         <th>4</th>
       </tr>
+      <% })%>
     </tbody>
   </table>
 </div>
