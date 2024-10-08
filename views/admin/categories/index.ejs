@@ -4,7 +4,7 @@ include('../../partials/navbar.ejs');%>
 <div class="container">
   <hr />
   <h2>Categorias</h2>
-  <a class="btn btn-success" href="admin/categories/new">Nova Categoria</a>
+  <a class="btn btn-success" href="/admin/categories/new">Nova Categoria</a>
   <hr />
 
   <table class="table table.bordered">
@@ -24,7 +24,14 @@ include('../../partials/navbar.ejs');%>
         <th><%=category.slug %></th>
         <th>
           <button class="btn btn-warning">Editar</button>
-          <button class="btn btn-warning">Deletar</button>
+          <form
+            method="POST"
+            action="/categories/delete"
+            style="display: inline"
+          >
+            <input type="hidden" name="id" value="<%= category.id%>" />
+            <button class="btn btn-warning">Deletar</button>
+          </form>
         </th>
       </tr>
       <% })%>
