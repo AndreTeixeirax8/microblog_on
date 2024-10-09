@@ -28,6 +28,7 @@ include('../../partials/navbar.ejs');%>
             method="POST"
             action="/categories/delete"
             style="display: inline"
+            onsubmit="confirmarDelecao(event,this)"
           >
             <input type="hidden" name="id" value="<%= category.id%>" />
             <button class="btn btn-warning">Deletar</button>
@@ -40,3 +41,12 @@ include('../../partials/navbar.ejs');%>
 </div>
 
 <%- include('../../partials/footer.ejs');%>
+<script>
+  function confirmarDelecao(event, form) {
+    event.preventDefault();
+    var decisao = confirm("Deseja excluir");
+    if (decisao) {
+      form.submit();
+    }
+  }
+</script>
