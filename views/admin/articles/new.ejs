@@ -32,9 +32,14 @@
 <%- include('../../partials/footer.ejs');%>
 
 <script src="/tinymce/tinymce.min.js"></script>
+
 <script>
   tinymce.init({
     selector: "#article",
-    plugins: ["advlist autolink"],
+    plugins:
+      "advlist autolink link image lists print preview hr searchreplace wordcount insertdatetime table",
+    toolbar:
+      "undo redo | formatselect | bold italic backcolor | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | removeformat | link image | table",
+    ///menubar: false,
   });
 </script>
