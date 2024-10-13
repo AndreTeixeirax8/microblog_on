@@ -10,7 +10,7 @@
     </div>
 
     <div class="card-body">
-      <form method="POST" action="/categories/save">
+      <form method="POST" action="/categories/update">
         <input
           class="form-control"
           type="text"
@@ -18,7 +18,8 @@
           placeholder="Defina o titulo da categoria"
           value="<%= category.title%>"
         /><br />
-        <button class="btn btn-success">Edição</button>
+        <input type="hidden" name="id" value="<%= category.id %>" />
+        <button class="btn btn-success">Atualizar</button>
       </form>
     </div>
   </div>
