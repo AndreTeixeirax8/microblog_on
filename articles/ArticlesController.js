@@ -1,11 +1,11 @@
 const express = require("express");
 const router = express.Router();
 const Category = require("../categories/Category");
-const Artcle = require("./Artcle");
+const Article = require("./Article");
 const slugify = require("slugify");
 
 router.get("/admin/articles", (req, res) => {
-  res.send("artigos");
+  res.render("admin/articles/index");
 });
 
 router.get("/admin/articles/new", (req, res) => {
