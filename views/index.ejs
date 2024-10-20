@@ -1,7 +1,33 @@
-<%- include('partials/header.ejs');%> <%- include('partials/navbar.ejs');%>
+<%- include('partials/header.ejs');%>
+<!--TESTE-->
+<%- include('partials/homenavbar.ejs');%>
 
 <body>
-  <h1>teste de views</h1>
+  <div class="container">
+    <hr />
+    <div class="
+    <div class="jumbotron">
+      <h1 class="display-4">MicroBlog</h1>
+      <p class="lead">Um simples microblog</p>
+      <hr class="my-2" />
+      <p>More info</p>
+      <p class="lead">
+        <a class="btn btn-primary btn-lg" href="#" role="button">Saiba mais</a>
+      </p>
+    </div>
+
+    <hr />
+    <% articles.forEach(article =>{ %>
+    <div class="card">
+      <div class="card-header">
+        <h2><%= article.title%></h2>
+      </div>
+      <div class="card-body"></div>
+      <a href="#" class="btn btn-success">Ler</a>
+    </div>
+    <br />
+    <% }) %>
+  </div>
 </body>
 
 <%- include('partials/footer.ejs');%>

@@ -25,7 +25,9 @@ app.use("/", categoriesController);
 app.use("/", categoriesArticles);
 
 app.get("/", (req, res) => {
-  res.render("index"); //pagina inicial
+  Article.findAll().then((articles) => {
+    res.render("index", { articles: articles }); //pagina inicial
+  });
 });
 
 app.listen(3000, () => {
