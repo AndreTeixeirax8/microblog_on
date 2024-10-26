@@ -29,7 +29,9 @@ app.get("/", (req, res) => {
   Article.findAll({
     order: [["createdAt", "DESC"]], // Ordena pelo campo de data de criação
   }).then((articles) => {
-    res.render("index", { articles: articles }); // página inicial
+    Category.findAll().then((categories) => {
+      res.render("index", { articles: articles, categories: categories }); // página inicial
+    });
   });
 });
 
@@ -42,7 +44,9 @@ app.get("/:slug", (req, res) => {
   })
     .then((article) => {
       if (article != undefined) {
-        res.render("article", { article: article });
+        Category.findAll().then((categories) => {
+          res.render("article", { article: article, categories: categories }); // página inicial
+        });
       } else {
         res.redirect("/");
       }
