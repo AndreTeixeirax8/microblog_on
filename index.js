@@ -26,8 +26,10 @@ app.use("/", categoriesController);
 app.use("/", categoriesArticles);
 
 app.get("/", (req, res) => {
-  Article.findAll().then((articles) => {
-    res.render("index", { articles: articles }); //pagina inicial
+  Article.findAll({
+    order: [["createdAt", "DESC"]], // Ordena pelo campo de data de criação
+  }).then((articles) => {
+    res.render("index", { articles: articles }); // página inicial
   });
 });
 
