@@ -53,9 +53,9 @@ router.post("/articles/delete", (req, res) => {
   }
 });
 
-router.post("admin/articles/edit/:id", (req, res) => {
+router.get("/admin/articles/edit/:id", (req, res) => {
   var id = req.params.id;
-  Articles.findByPk(id)
+  Article.findByPk(id)
     .then((article) => {
       if (article != undefined) {
         Category.findAll().then((categories) => {
