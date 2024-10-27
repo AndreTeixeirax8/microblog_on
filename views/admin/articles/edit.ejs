@@ -9,7 +9,8 @@
     </div>
 
     <div class="card-body">
-      <form method="POST" action="/articles/save">
+      <form method="POST" action="/articles/update">
+        <input type="hidden" value="<%= article.id %>" name="id" />
         <input
           class="form-control"
           type="text"

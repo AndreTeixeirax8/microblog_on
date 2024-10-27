@@ -3,6 +3,7 @@ const router = express.Router();
 const Category = require("../categories/Category");
 const Article = require("./Article");
 const slugify = require("slugify");
+const { where } = require("sequelize");
 
 router.get("/admin/articles", (req, res) => {
   Article.findAll({
@@ -67,6 +68,33 @@ router.get("/admin/articles/edit/:id", (req, res) => {
       } else {
         res.redirect("/");
       }
+    })
+    .catch((err) => {
+      res.redirect("/");
+    });
+});
+
+router.post("/articles/update", (req, res) => {
+  var id = req.body.id;
+  var title = req.body.title;
+  var body = req.body.body;
+  var category = req.body.category;
+
+  Article.update(
+    {
+      title: title,
+      body: body,
+      categoryId: category,
+      slug: slugify(title),
+    },
+    {
+      where: {
+        id: id,
+      },
+    }
+  )
+    .then(() => {
+      res.redirect("/admin/articles");
     })
     .catch((err) => {
       res.redirect("/");
