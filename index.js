@@ -28,6 +28,7 @@ app.use("/", categoriesArticles);
 app.get("/", (req, res) => {
   Article.findAll({
     order: [["createdAt", "DESC"]], // Ordena pelo campo de data de criação
+    limit: 4,
   }).then((articles) => {
     Category.findAll().then((categories) => {
       res.render("index", { articles: articles, categories: categories }); // página inicial
