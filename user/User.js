@@ -13,6 +13,6 @@ const User = connection.define("users", {
 });
 
 //quando ativo ele vai criar a tabela , após criar pode ser removido
-User.sync({ force: true });
+//User.sync({ force: false });
 
 module.exports = User;
