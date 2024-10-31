@@ -7,6 +7,8 @@ const categoriesArticles = require("./articles/ArticlesController");
 const Article = require("./articles/Article");
 const Category = require("./categories/Category");
 const { where } = require("sequelize");
+const usersController = require("./user/UsersController");
+const User = require("./user/User");
 
 app.set("view engine", "ejs");
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -24,6 +26,7 @@ connection
 
 app.use("/", categoriesController);
 app.use("/", categoriesArticles);
+app.use("/", usersController);
 
 app.get("/", (req, res) => {
   Article.findAll({
