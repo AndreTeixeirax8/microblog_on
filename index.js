@@ -9,11 +9,18 @@ const Category = require("./categories/Category");
 const { where } = require("sequelize");
 const usersController = require("./user/UsersController");
 const User = require("./user/User");
+const session = require("express-session");
 
 app.set("view engine", "ejs");
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 app.use(express.static("public"));
+app.use(
+  session({
+    secret: "palavra-secreta",
+    cookie: { maxAge: 3000000 },
+  })
+);
 
 connection
   .authenticate()
