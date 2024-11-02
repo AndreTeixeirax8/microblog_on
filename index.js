@@ -18,7 +18,9 @@ app.use(express.static("public"));
 app.use(
   session({
     secret: "palavra-secreta",
-    cookie: { maxAge: 3000000 },
+    //Esse valor equivale a 3 dias fonte site
+    //https://www.alltheunits.com/pt/tempo/milissegundos/dias/?value=300000000
+    cookie: { maxAge: 300000000 },
   })
 );
 
