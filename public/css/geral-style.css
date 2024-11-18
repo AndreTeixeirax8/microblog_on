@@ -1,0 +1,7 @@
+/* Define a cor de fundo da página */
+body {
+  background-color: #323737; /* Cinza claro */
+  margin: 0;
+  padding: 0;
+}
+/* Estilizando a tabela */
