@@ -1,7 +1,16 @@
 /* Define a cor de fundo da página */
 body {
-  background-color: #323737; /* Cinza claro */
+  background-color: #b9c6c6; /* Cinza claro */
   margin: 0;
   padding: 0;
 }
-/* Estilizando a tabela */
+/* Alterando o estilo da classe container */
+.container {
+  background-color: #b9c6c6; /* Escolha a cor desejada */
+}
+
+.card-header {
+  background-color: #549ce5; /* Escolha uma cor de fundo */
+  border: 1px solid #ddd; /* Ajuste a borda */
+  color: #333; /* Cor do texto */
+}
