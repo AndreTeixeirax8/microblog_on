@@ -10,6 +10,10 @@ const { where } = require("sequelize");
 const usersController = require("./user/UsersController");
 const User = require("./user/User");
 const session = require("express-session");
+const multer = require("multer"); // Importa o multer
+const path = require("path");
+const fs = require("fs");
+const uploadDir = path.join(__dirname, "upload");
 
 app.set("view engine", "ejs");
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -36,6 +40,26 @@ connection
 app.use("/", categoriesController);
 app.use("/", categoriesArticles);
 app.use("/", usersController);
+
+// Configuração do Multer para salvar os arquivos na pasta 'upload'
+const storage = multer.diskStorage({
+  destination: (req, file, cb) => {
+    cb(null, path.join(__dirname, "upload")); // Define a pasta de destino
+  },
+  filename: (req, file, cb) => {
+    const uniqueSuffix = Date.now() + "-" + Math.round(Math.random() * 1e9);
+    cb(null, uniqueSuffix + "-" + file.originalname); // Define o nome do arquivo
+  },
+});
+const upload = multer({ storage: storage });
+
+// Rota para upload de imagem
+app.post("/upload", upload.single("image"), (req, res) => {
+  if (!req.file) {
+    return res.status(400).send("Nenhum arquivo foi enviado.");
+  }
+  res.send(`Arquivo ${req.file.filename} enviado com sucesso!`);
+});
 
 app.get("/", (req, res) => {
   Article.findAll({
